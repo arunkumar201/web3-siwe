@@ -6,12 +6,6 @@ import { z } from 'zod';
 const env = createEnv({
   server: {
     NODE_ENV: z.enum(['development', 'test', 'production']),
-    NEXTAUTH_URL: z.preprocess(
-      // This makes Vercel deployments not fail if you don't set NEXTAUTH_URL
-      // Since NextAuth.js automatically uses the VERCEL_URL if present.
-      str => (str ? str : `https://${process.env.VERCEL_URL}`),
-      z.string().url()
-    ),
   },
   client: {
     NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID: z.string(),

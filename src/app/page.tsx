@@ -13,7 +13,7 @@ const HomePage: NextPage = () => (
       <Link href="https://next-auth.js.org/" className="h-full" rel="noreferrer" target="_blank">
         <Image src={nextAuthLogo} alt="Next Auth Logo" className="h-full w-auto object-contain" />
       </Link>
-      <Link href="https://login.xyz/" className="h-full" rel="noreferrer" target="_blank">
+      <Link href="" className="h-full" rel="noreferrer" target="_blank">
         <Image src={siweLogo} alt="SIWE Logo" className="h-full w-auto object-contain" />
       </Link>
     </div>
