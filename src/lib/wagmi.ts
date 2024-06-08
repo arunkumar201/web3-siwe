@@ -9,10 +9,10 @@ import { transports } from './viem';
 export const projectId = env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID;
 
 const metadata = {
-  name: 'SIWE + Next Auth',
-  description: 'SIWE + Next Auth Example',
-  url: 'https://siwe-next-auth.vercel.app',
-  icons: ['https://siwe-next-auth.vercel.app/siwe.png'],
+  name: 'Wagmi + web3 modal',
+  description: 'Wagmi + web3modal',
+  url: '',
+  icons: [''],
 };
 
 export const config = defaultWagmiConfig({

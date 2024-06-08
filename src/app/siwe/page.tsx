@@ -2,11 +2,7 @@ import { NextPage } from 'next';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
-import { getServerSession } from '../api/auth/options';
-
 const SIWEPage: NextPage = async () => {
-  const session = await getServerSession();
-
   return (
     <Card>
       <CardHeader>
@@ -17,18 +13,16 @@ const SIWEPage: NextPage = async () => {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        {session ? (
-          <p>
-            You are currently <strong>signed in</strong>.
-            <br />
-            <br />
-            You are registered as a <strong>{session?.user.role}</strong>.
-          </p>
-        ) : (
-          <p>
-            You are currently <strong>not signed in</strong>.
-          </p>
-        )}
+        <p>
+          You are currently <strong>signed in</strong>.
+          <br />
+          <br />
+          You are registered as a <strong></strong>.
+        </p>
+
+        <p>
+          You are currently <strong>not signed in</strong>.
+        </p>
       </CardContent>
     </Card>
   );

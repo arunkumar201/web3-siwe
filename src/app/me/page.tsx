@@ -1,13 +1,9 @@
-import { NextPage } from 'next';
-
-import { SessionInfo } from '@/components/session-info';
-
-import { getServerSession } from '../api/auth/options';
-
-const Page: NextPage = async () => {
-  const session = await getServerSession();
-
-  return <SessionInfo session={session!} />;
+const Me = () => {
+  return (
+    <>
+      <h1>Me Page</h1>
+    </>
+  );
 };
 
-export default Page;
+export default Me;

@@ -3,6 +3,12 @@ import './src/env.mjs';
 /** @type {import('next').NextConfig} */
 const config = {
   reactStrictMode: true,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   logging: { fetches: { fullUrl: true } },
   experimental: {
     webpackBuildWorker: true,

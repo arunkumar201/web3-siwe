@@ -18,7 +18,7 @@ export const Header: React.FC = () => {
         </Button>
       </div>
       <div className="flex justify-end">
-        <AccountButton />
+        <w3m-button />
       </div>
     </header>
   );
