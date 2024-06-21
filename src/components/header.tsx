@@ -1,6 +1,5 @@
 import Link from 'next/link';
 
-import { AccountButton } from './account-button';
 import { Button } from './ui/button';
 
 export const Header: React.FC = () => {
@@ -16,9 +15,14 @@ export const Header: React.FC = () => {
         <Button variant="link" size="sm" asChild>
           <Link href="/admin">Admin</Link>
         </Button>
+
+        <Button variant="link" size="sm" asChild>
+          <Link href={`/admin/${Math.floor(Math.random() * 10000)}`}>Admin dynamic</Link>
+        </Button>
       </div>
       <div className="flex justify-end">
         <w3m-button />
+        <h1>Hello</h1>
       </div>
     </header>
   );

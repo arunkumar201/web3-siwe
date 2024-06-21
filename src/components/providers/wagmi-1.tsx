@@ -1,9 +1,12 @@
+/* eslint-disable import/named */
 'use client';
 
-import type { PropsWithChildren } from 'react';
+import { useState, type ReactNode } from 'react';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryStreamedHydration } from '@tanstack/react-query-next-experimental';
+import { State, WagmiProvider } from 'wagmi';
+
+import { config } from '@/lib/wagmi';
 
 function makeQueryClient() {
   return new QueryClient({
@@ -33,11 +36,17 @@ function getQueryClient() {
   }
 }
 
-export const QueryProvider: React.FC<PropsWithChildren> = ({ children }) => {
-  const queryClient = getQueryClient();
+export function NewWagmiProvider({
+  children,
+  initialState,
+}: {
+  children: ReactNode;
+  initialState: State | undefined;
+}) {
+  const [queryClient] = useState(() => new QueryClient());
   return (
-    <QueryClientProvider client={queryClient}>
-      <ReactQueryStreamedHydration>{children}</ReactQueryStreamedHydration>
-    </QueryClientProvider>
+    <WagmiProvider config={config} initialState={initialState}>
+      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    </WagmiProvider>
   );
-};
+}

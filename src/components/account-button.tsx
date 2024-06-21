@@ -11,7 +11,6 @@ export const AccountButton: React.FC = () => {
   const { open } = useWeb3Modal();
   const { status } = useSession();
 
-
   function handleClick() {
     open().catch(console.error);
   }

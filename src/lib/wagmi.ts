@@ -1,6 +1,7 @@
-import { defaultWagmiConfig } from '@web3modal/wagmi/react/config';
-import { cookieStorage, createStorage } from 'wagmi';
+/* eslint-disable import/named */
+import { cookieStorage, createConfig, createStorage } from 'wagmi';
 import { mainnet } from 'wagmi/chains';
+import { injected, walletConnect } from 'wagmi/connectors';
 
 import { env } from '@/env.mjs';
 
@@ -15,11 +16,19 @@ const metadata = {
   icons: [''],
 };
 
-export const config = defaultWagmiConfig({
+export const config = createConfig({
   chains: [mainnet],
-  projectId,
-  metadata,
-  ssr: true,
+  cacheTime: 10_000,
+  connectors: [
+    injected({
+      unstable_shimAsyncInject: 60_000,
+    }),
+    walletConnect({
+      projectId,
+      metadata,
+    }),
+  ],
+  ssr: false,
   transports,
   storage: createStorage({
     storage: cookieStorage,

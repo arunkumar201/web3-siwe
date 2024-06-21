@@ -3,16 +3,18 @@
 import type { ReactNode } from 'react';
 
 import { createWeb3Modal } from '@web3modal/wagmi/react';
-import { mainnet } from 'viem/chains';
-import { type State, WagmiProvider } from 'wagmi';
+import { type State,WagmiProvider } from 'wagmi';
 
-import { config, projectId } from '@/lib/wagmi';
+import { config,projectId } from '@/lib/wagmi';
 
 // Create modal
 createWeb3Modal({
   wagmiConfig: config,
   projectId,
-  defaultChain: mainnet,
+  themeVariables: {
+    '--w3m-z-index': 1,
+    '--w3m-accent': '#28cbb7',
+  },
 });
 
 function ContextProvider({
