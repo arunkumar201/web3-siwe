@@ -10,7 +10,7 @@ import { cookieToInitialState } from 'wagmi';
 import { Header } from '@/components/header';
 import { QueryProvider } from '@/components/providers/query';
 import { WagmiProvider } from '@/components/providers/wagmi';
-import { config } from '@/lib/wagmi';
+import { getConfig } from '@/lib/wagmi';
 
 const inter = Inter({
   weight: ['400', '500'],
@@ -22,7 +22,7 @@ const inter = Inter({
 // ====================
 
 const RootLayout: React.FC<React.PropsWithChildren> = async ({ children }) => {
-  const initialState = cookieToInitialState(config, headers().get('cookie'));
+  const initialState = cookieToInitialState(getConfig(), headers().get('cookie'));
 
   return (
     <html lang="en" className="dark min-h-screen">

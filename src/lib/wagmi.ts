@@ -16,21 +16,21 @@ const metadata = {
   icons: [''],
 };
 
-export const config = createConfig({
-  chains: [mainnet],
-  cacheTime: 10_000,
-  connectors: [
-    injected({
-      unstable_shimAsyncInject: 60_000,
+export function getConfig() {
+  return createConfig({
+    chains: [mainnet],
+    connectors: [
+      injected(),
+      walletConnect({
+        projectId,
+        metadata,
+        showQrModal: false,
+      }),
+    ],
+    ssr: true,
+    transports,
+    storage: createStorage({
+      storage: cookieStorage,
     }),
-    walletConnect({
-      projectId,
-      metadata,
-    }),
-  ],
-  ssr: false,
-  transports,
-  storage: createStorage({
-    storage: cookieStorage,
-  }),
-});
+  });
+}
