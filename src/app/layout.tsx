@@ -10,6 +10,7 @@ import { cookieToInitialState } from 'wagmi';
 import { Header } from '@/components/header';
 import { QueryProvider } from '@/components/providers/query';
 import { WagmiProvider } from '@/components/providers/wagmi';
+import { WalletUtilsProvider } from '@/components/providers/WalletUtils';
 import { getConfig } from '@/lib/wagmi';
 
 const inter = Inter({
@@ -29,12 +30,14 @@ const RootLayout: React.FC<React.PropsWithChildren> = async ({ children }) => {
       <body className={`${inter.variable} font-inter`}>
         <QueryProvider>
           <WagmiProvider initialState={initialState}>
-            <main>
-              <Header />
-              <div className="flex h-full w-full items-start justify-center p-5 pt-[15vh]">
-                {children}
-              </div>
-            </main>
+            <WalletUtilsProvider>
+              <main>
+                <Header />
+                <div className="flex h-full w-full items-start justify-center p-5 pt-[15vh]">
+                  {children}
+                </div>
+              </main>
+            </WalletUtilsProvider>
           </WagmiProvider>
         </QueryProvider>
       </body>
